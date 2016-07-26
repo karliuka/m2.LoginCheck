@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Faonni
+ *  
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ *
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade module to newer
+ * versions in the future.
+ * 
+ * @package     Faonni_LoginCheck
+ * @copyright   Copyright (c) 2016 Karliuka Vitalii(karliuka.vitalii@gmail.com) 
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+-->
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+	<container name="listing_top">
+		<massaction name="listing_massaction">	
+			<action name="customer_approval">
+				 <argument name="data" xsi:type="array">
+					 <item name="config" xsi:type="array">
+						<item name="type" xsi:type="string">customer_approval</item>
+						<item name="label" xsi:type="string" translate="true">Approval</item>
+						<item name="url" xsi:type="url" path="logincheck/index/massApproval"/>
+						<item name="confirm" xsi:type="array">
+							<item name="title" xsi:type="string" translate="true">approval customer</item>
+							<item name="message" xsi:type="string" translate="true">Are you sure you wan't to approval selected customer?</item>
+						</item>
+					</item>
+				</argument>
+			</action>
+			<action name="customer_not_approval">
+				 <argument name="data" xsi:type="array">
+					 <item name="config" xsi:type="array">
+						<item name="type" xsi:type="string">customer_not_approval</item>
+						<item name="label" xsi:type="string" translate="true">Not Approval</item>
+						<item name="url" xsi:type="url" path="logincheck/index/massNotApproval"/>
+						<item name="confirm" xsi:type="array">
+							<item name="title" xsi:type="string" translate="true">not approval customer</item>
+							<item name="message" xsi:type="string" translate="true">Are you sure you wan't to not approval selected customer?</item>
+						</item>
+					</item>
+				</argument>
+			</action>			
+		</massaction>
+	</container>	
+</listing>

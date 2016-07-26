@@ -22,11 +22,10 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-	xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
-    <event name="controller_action_predispatch">
-        <observer name="accessrestriction" instance="Faonni\LoginCheck\Observer\Redirect" />
-    </event>
-    <event name="customer_login">
-        <observer name="accessrestriction" instance="Faonni\LoginCheck\Observer\Login" />
-    </event>	
+	xsi:noNamespaceSchemaLocation="urn:magento:framework:App/etc/routes.xsd">
+    <router id="admin">
+        <route id="logincheck" frontName="logincheck">
+            <module name="Faonni_LoginCheck" />
+        </route>
+    </router>
 </config>
