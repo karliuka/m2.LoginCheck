@@ -28,7 +28,7 @@ use Magento\Customer\Model\Session;
 /**
  * Customer log observer.
  */
-class Login implements ObserverInterface
+class LoginObserver implements ObserverInterface
 {
     /**
      * @var Session

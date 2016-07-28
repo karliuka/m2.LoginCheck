@@ -26,7 +26,7 @@ use Magento\Framework\UrlInterface;
 use Magento\Customer\Model\Registration;
 use Magento\Customer\Model\Session;
 
-class Redirect implements ObserverInterface
+class RedirectObserver implements ObserverInterface
 {
     /** 
 	 * @var Registration 
