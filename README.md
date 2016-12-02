@@ -8,7 +8,7 @@ LoginCheck extension stops not registered users from seeing your shops content.
 2. Enter following commands to install module:
 
     ```bash
-    composer require faonni/module-logincheck=dev-master
+    composer require faonni/module-logincheck
     ```
    Wait while dependencies are updated.
 
