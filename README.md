@@ -1,4 +1,4 @@
-# Magento2 LoginCheck. 
+# Magento2 Customer Login Check
 LoginCheck extension stops not registered users from seeing your shops content.
 
 ## Install with Composer as you go
@@ -8,7 +8,7 @@ LoginCheck extension stops not registered users from seeing your shops content.
 2. Enter following commands to install module:
 
     ```bash
-    composer require faonni/module-logincheck
+    composer require faonni/module-customer-login-check
     ```
    Wait while dependencies are updated.
 

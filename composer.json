@@ -1,8 +1,8 @@
 {
-    "name": "faonni/module-logincheck",
+    "name": "faonni/module-customer-login-check",
     "description": "Login Check extension stops not registered users from seeing your shops content.",
     "type": "magento2-module",
-	"version": "2.0.1",
+	"version": "2.0.2",
 	"license": [
 		"OSL-3.0"
 		],
