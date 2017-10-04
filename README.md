@@ -1,4 +1,5 @@
 # Magento2 Customer Login Check
+
 LoginCheck extension stops not registered users from seeing your shops content.
 
 ## Install with Composer as you go
