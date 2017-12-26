@@ -6,63 +6,85 @@
  */
 namespace Faonni\LoginCheck\Controller\Adminhtml\Index;
 
+use Magento\Framework\Controller\ResultFactory;
+use Magento\Framework\Api\DataObjectHelper;
 use Magento\Backend\App\Action\Context;
-use Magento\Customer\Model\ResourceModel\Customer\CollectionFactory;
 use Magento\Eav\Model\Entity\Collection\AbstractCollection;
 use Magento\Ui\Component\MassAction\Filter;
 use Magento\Customer\Api\CustomerRepositoryInterface;
-use Magento\Framework\Controller\ResultFactory;
+use Magento\Customer\Api\Data\CustomerInterfaceFactory;
+use Magento\Customer\Model\ResourceModel\Customer\CollectionFactory;
+use Magento\Customer\Model\Customer\Mapper as CustomerMapper;
+use Magento\Customer\Controller\Adminhtml\Index\AbstractMassAction;
 
 /**
- * Class MassApproval
+ * MassApproval Controller
  */
-class MassApproval 
-	extends \Magento\Customer\Controller\Adminhtml\Index\AbstractMassAction
+class MassApproval extends AbstractMassAction
 {
     /**
-     * @var CustomerRepositoryInterface
+     * Customer Repository
+     *
+     * @var \Magento\Customer\Api\CustomerRepositoryInterface
      */
     protected $customerRepository;
 	
     /**
+     * Customer Mapper
+     *
      * @var \Magento\Customer\Model\Customer\Mapper
      */
     protected $customerMapper;
 	
     /**
-     * @var CustomerInterfaceFactory
+     * Customer Interface Factory
+     *
+     * @var \Magento\Customer\Api\Data\CustomerInterfaceFactory
      */
     protected $customerDataFactory;
 	
     /**
-     * @var DataObjectHelper
+     * Data Object Helper
+     *
+     * @var \Magento\Framework\Api\DataObjectHelper
      */
     protected $dataObjectHelper;	
 	
     /**
+     * Initialize Controller
+     *
      * @param Context $context
      * @param Filter $filter
      * @param CollectionFactory $collectionFactory
      * @param CustomerRepositoryInterface $customerRepository
+     * @param CustomerInterfaceFactory $customerDataFactory
+     * @param DataObjectHelper $dataObjectHelper
+     * @param CustomerMapper $customerMapper
      */
     public function __construct(
         Context $context,
         Filter $filter,
         CollectionFactory $collectionFactory,
 		CustomerRepositoryInterface $customerRepository,
-		\Magento\Customer\Api\Data\CustomerInterfaceFactory $customerDataFactory,
-		\Magento\Framework\Api\DataObjectHelper $dataObjectHelper,
-		\Magento\Customer\Model\Customer\Mapper $customerMapper
+		CustomerInterfaceFactory $customerDataFactory,
+		DataObjectHelper $dataObjectHelper,
+		CustomerMapper $customerMapper
     ) {
-        parent::__construct($context, $filter, $collectionFactory);
-        
 		$this->customerRepository = $customerRepository;
 		$this->customerDataFactory = $customerDataFactory;
 		$this->dataObjectHelper = $dataObjectHelper;
 		$this->customerMapper = $customerMapper;
+		
+		parent::__construct(
+			$context, 
+			$filter, 
+			$collectionFactory
+		);
     }
 
     /**
+     * Mass Action
+     *
      * @param AbstractCollection $collection
      * @return \Magento\Backend\Model\View\Result\Redirect
      */
@@ -89,7 +111,9 @@ class MassApproval
         }
 
         if ($customersUpdated) {
-            $this->messageManager->addSuccess(__('A total of %1 record(s) were updated.', $customersUpdated));
+            $this->messageManager->addSuccess(
+				__('A total of %1 record(s) were updated.', $customersUpdated)
+			);
         }
 
         $resultRedirect = $this->resultFactory->create(ResultFactory::TYPE_REDIRECT);

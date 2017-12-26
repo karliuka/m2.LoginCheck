@@ -13,21 +13,29 @@ use Magento\Eav\Model\Entity\Attribute\SetFactory as AttributeSetFactory;
 use Magento\Framework\Setup\InstallDataInterface;
 use Magento\Framework\Setup\ModuleContextInterface;
 use Magento\Framework\Setup\ModuleDataSetupInterface;
- 
+
+/**
+ * Install Data
+ */ 
 class InstallData implements InstallDataInterface
 {
-    
     /**
-     * @var CustomerSetupFactory
+     * Customer Setup Factory
+     *
+     * @var \Magento\Customer\Setup\CustomerSetupFactory
      */
     protected $customerSetupFactory;
     
     /**
-     * @var AttributeSetFactory
+     * Attribute Set Factory
+     *
+     * @var \Magento\Eav\Model\Entity\Attribute\SetFactory
      */
-    private $attributeSetFactory;
+    protected $attributeSetFactory;
     
     /**
+     * Initialize Install
+     *
      * @param CustomerSetupFactory $customerSetupFactory
      * @param AttributeSetFactory $attributeSetFactory
      */
@@ -39,9 +47,12 @@ class InstallData implements InstallDataInterface
         $this->attributeSetFactory = $attributeSetFactory;
     }
  
-    
     /**
-     * {@inheritdoc}
+     * Installs DB Data
+     *
+     * @param ModuleDataSetupInterface $setup
+     * @param ModuleContextInterface $context
+     * @return void
      */
     public function install(ModuleDataSetupInterface $setup, ModuleContextInterface $context)
     {

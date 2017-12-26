@@ -11,16 +11,20 @@ use Magento\Framework\Event\ObserverInterface;
 use Magento\Customer\Model\Session;
 
 /**
- * Customer log observer.
+ * Login Observer
  */
 class LoginObserver implements ObserverInterface
 {
     /**
-     * @var Session
+     * Customer Session
+     *
+     * @var \Magento\Customer\Model\Session
      */
     protected $session;
 	
     /**
+     * Initialize Observer
+     *
      * @param Session $customerSession 
      */
     public function __construct(
@@ -30,7 +34,7 @@ class LoginObserver implements ObserverInterface
     }
 	
     /**
-     * Handler for 'customer_login' event.
+     * Customer Login Event
      *
      * @param Observer $observer
      * @return void
@@ -41,7 +45,10 @@ class LoginObserver implements ObserverInterface
 		if ($customer->getIsApproval()) {
 			return;
 		}
+		
 		$this->session->logout();
-		throw new \Exception(__('This account is not confirmed.'));
+		throw new \Exception(
+			__('This account is not confirmed.')
+		);
     }
 }
